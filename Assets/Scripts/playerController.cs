@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour {
 
-    public float moveSpeed = 10;
+    public float moveSpeed = 25;
     public float rotateSpeed = 1;
     private Rigidbody rb;
 
@@ -16,13 +16,17 @@ public class playerController : MonoBehaviour {
         if (Input.GetKey(KeyCode.W))
         {
             rb.AddForce(transform.forward * moveSpeed);
-        }else if (Input.GetKey(KeyCode.S))
+        }
+        else if (Input.GetKey(KeyCode.S))
         {
             rb.AddForce(-transform.forward * moveSpeed);
-        }else if (Input.GetKey(KeyCode.A)){
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
             rb.AddTorque(-transform.up * rotateSpeed);
         }
-        else if (Input.GetKey(KeyCode.D)){
+        else if (Input.GetKey(KeyCode.D))
+        {
             rb.AddTorque(transform.up * rotateSpeed);
         }
     }
