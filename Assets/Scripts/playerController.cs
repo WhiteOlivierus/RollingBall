@@ -2,30 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerController : MonoBehaviour {
+public class playerController : MonoBehaviour
+{
 
     public float moveSpeed = 25;
     public float rotateSpeed = 1;
     private Rigidbody rb;
 
-    void Start () {
+    void Start ()
+    {
         rb = GetComponent<Rigidbody>();
 	}
 	
-	void FixedUpdate () {
+	void FixedUpdate ()
+    {
         if (Input.GetKey(KeyCode.W))
         {
             rb.AddForce(transform.forward * moveSpeed);
         }
-        else if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S))
         {
             rb.AddForce(-transform.forward * moveSpeed);
         }
-        else if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
             rb.AddTorque(-transform.up * rotateSpeed);
         }
-        else if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
         {
             rb.AddTorque(transform.up * rotateSpeed);
         }
