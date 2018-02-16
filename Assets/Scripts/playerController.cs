@@ -7,6 +7,7 @@ public class playerController : MonoBehaviour
 
     public float moveSpeed = 25;
     public float rotateSpeed = 1;
+    public float jumpHeight = 250f;
     private Rigidbody rb;
 
     void Start ()
@@ -31,6 +32,10 @@ public class playerController : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             rb.AddTorque(transform.up * rotateSpeed);
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(transform.up * jumpHeight);
         }
     }
 }
