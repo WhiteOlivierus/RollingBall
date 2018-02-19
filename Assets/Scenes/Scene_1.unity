@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 188596609}
   - component: {fileID: 188596612}
   m_Layer: 0
-  m_Name: Platform
+  m_Name: Playfield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -319,9 +319,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bc927328c953fc4b8aff91912948e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  rotateSpeed: 1
-  jumpHeight: 250
+  moveSpeed: 25
+  rotateSpeed: 1.25
+  jumpHeight: 600
+  grounded: 0
 --- !u!54 &387771348
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -330,12 +331,12 @@ Rigidbody:
   m_GameObject: {fileID: 387771345}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.01
   m_AngularDrag: 3
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!23 &387771349
 MeshRenderer:
@@ -403,7 +404,7 @@ GameObject:
   - component: {fileID: 459873228}
   - component: {fileID: 459873232}
   m_Layer: 0
-  m_Name: Platform
+  m_Name: Playfield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -933,7 +934,7 @@ GameObject:
   - component: {fileID: 1466166221}
   - component: {fileID: 1466166225}
   m_Layer: 0
-  m_Name: Platform
+  m_Name: Playfield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

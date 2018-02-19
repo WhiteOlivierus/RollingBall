@@ -22,17 +22,17 @@ public class spawnRandom : MonoBehaviour
     {
         if (!spawned)
         {
-            createPoint();
-
-            score++;
-            GameObject.Find("Score").GetComponent<Text>().text = score.ToString();
+            if (createPoint())
+            {
+                score++;
+                GameObject.Find("Score").GetComponent<Text>().text = score.ToString();
+            }      
         }
         Debug.DrawLine(basePos, toGroundPos, Color.red);
     }
-    void createPoint()
+
+    bool createPoint()
     {
-
-
         float x = Random.Range(transform.localScale.x / 2 - 0.5f, -transform.localScale.x / 2 + 0.5f);
         float z = Random.Range(transform.localScale.z / 2 - 0.5f, -transform.localScale.z / 2 + 0.5f);
 
@@ -40,17 +40,16 @@ public class spawnRandom : MonoBehaviour
         basePos = new Vector3(x, 20, z);
         toGroundPos = new Vector3(x, -20, z);
         Ray ray = new Ray(basePos, toGroundPos);
+
         if(Physics.Raycast(ray, out hit))
         {
-            print(hit.point);
-            spawned = Instantiate(toSpawn, hit.point + new Vector3(0,0.5f,0), Quaternion.identity);
+            Vector3 posInst = new Vector3(x,hit.point.y + 0.5f, z);
+            print(posInst);
+            spawned = Instantiate(toSpawn, posInst, Quaternion.identity);
             spawned.name = toSpawn.name;
+            return true;
         }
-        else
-        {
-            print("fail");
-        }
-
-
+        return false;
     }
+
 }

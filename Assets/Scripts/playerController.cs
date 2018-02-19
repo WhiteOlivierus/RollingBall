@@ -9,6 +9,7 @@ public class playerController : MonoBehaviour
     public float rotateSpeed = 1;
     public float jumpHeight = 250f;
     private Rigidbody rb;
+    public int grounded = 0;
 
     void Start ()
     {
@@ -33,9 +34,18 @@ public class playerController : MonoBehaviour
         {
             rb.AddTorque(transform.up * rotateSpeed);
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && grounded < 1)
         {
+            grounded += 1;
             rb.AddForce(transform.up * jumpHeight);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.name == "Playfield")
+        {
+            grounded = 0;
         }
     }
 }
