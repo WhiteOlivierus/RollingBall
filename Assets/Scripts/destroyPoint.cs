@@ -22,6 +22,7 @@ public class destroyPoint : MonoBehaviour
         {
             GetComponent<AudioSource>().clip = ohYeah[Random.Range(0,ohYeah.Count)];
             GetComponent<AudioSource>().Play();
+            transform.localScale = new Vector3(0,0,0);
             mayDestroy = true;
         }
     }

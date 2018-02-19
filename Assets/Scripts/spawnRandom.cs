@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Collections;
 using UnityEngine.UI;
+using UnityEngine;
 
 public class spawnRandom : MonoBehaviour
 {
-
     public GameObject toSpawn;
     private GameObject spawned;
     private Vector3 t;
@@ -28,7 +27,6 @@ public class spawnRandom : MonoBehaviour
                 GameObject.Find("Score").GetComponent<Text>().text = score.ToString();
             }      
         }
-        Debug.DrawLine(basePos, toGroundPos, Color.red);
     }
 
     bool createPoint()
@@ -37,11 +35,13 @@ public class spawnRandom : MonoBehaviour
         float z = Random.Range(transform.localScale.z / 2 - 0.5f, -transform.localScale.z / 2 + 0.5f);
 
         RaycastHit hit;
+
         basePos = new Vector3(x, 20, z);
         toGroundPos = new Vector3(x, -20, z);
-        Ray ray = new Ray(basePos, toGroundPos);
 
-        if(Physics.Raycast(ray, out hit))
+        Ray centerRay = new Ray(basePos, toGroundPos);
+
+        if (Physics.Raycast(centerRay, out hit))
         {
             Vector3 posInst = new Vector3(x,hit.point.y + 0.5f, z);
             print(posInst);
